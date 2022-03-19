@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('career');
+            $table->string('university');
+            $table->integer('age');
             $table->timestamps();
         });
     }
