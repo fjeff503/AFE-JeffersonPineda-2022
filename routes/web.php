@@ -23,8 +23,7 @@ Route::get('/', function () {
 //     return view('product');
 // });
 
-Route::get('/products/index', [ProductController::class, 'mostrar']);
-
 Auth::routes();
 
+Route::get('/products', [ProductController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

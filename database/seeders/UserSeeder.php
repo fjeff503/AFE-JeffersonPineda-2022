@@ -19,16 +19,20 @@ class UserSeeder extends Seeder
         User::insert([
             [
                 'id' => 1,
-                'name' => 'Jefferson Francisco Pineda Quintanilla',
+                'name' => 'Jefferson Francisco',
+                'lastname' => 'Pineda Quintanilla',
                 'email' => 'fjeffersonpineda@hotmail.com',
-                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
                 'password' => Hash::make('12345678'),
             ],
             [
                 'id' => 2,
-                'name' => 'Kenia Iveth Ortega Rodriguez',
+                'name' => 'Kenia Iveth',
+                'lastname' => 'Ortega Rodriguez',
                 'email' => 'kivethortega@hotmail.com',
-                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
                 'password' => Hash::make('12345678'),
             ]
         ]);
