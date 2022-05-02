@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
+use App\Models\Supplier;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class SupplierSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,27 +16,23 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::insert([
+        Supplier::insert([
             [
                 'id' => 1,
-                'productName' => 'Detergente',
-                'price' => 1.25,
-                'barcode' => 12345678,
-                'supplier_id' => 1,
-                'user_id' => 1,
+                'supplierName' => 'Unilever',
+                'address' => 'San Salvador',
+                'phoneNumber' => '2525-8987',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'id' => 2,
-                'productName' => 'Camisa',
-                'price' => 8.50,
-                'barcode' => 87654321,
-                'supplier_id' => 2,
-                'user_id' => 2,
+                'supplierName' => 'Orange',
+                'address' => 'Santa Ana',
+                'phoneNumber' => '2777-8987',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
-            ],
+            ]
         ]);
     }
 }
