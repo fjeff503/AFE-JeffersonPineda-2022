@@ -13,6 +13,13 @@ class Product extends Model
         'productName',
         'price',
         'barcode',
-        'supplier',
+        'image',
+        'supplier_id',
     ];
+
+    //Relacion de 1:1 de Ususario a productos
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }

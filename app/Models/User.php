@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    //Aqui definimos las relaciones
+
+    //Relacion de 1:N de Ususario a productos
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

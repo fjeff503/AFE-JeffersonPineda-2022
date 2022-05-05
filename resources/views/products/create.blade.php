@@ -58,8 +58,9 @@
                 <div class="col-md-6">
                     <select name="supplier" class="form-control" @error('supplier') is-invalid @enderror id="supplier">
                      <option>Seleccione---</option>
-                        @foreach ($suppliers as $id => $supplier)
-                           <option value="{{ $id }}"{{old('supplier')==$id ? 'selected':''}}>{{$supplier}}</option>
+                        {{-- @foreach ($suppliers as $id => $supplier) --}}
+                        @foreach ($suppliers as $supplier)
+                           <option value="{{ $supplier->id }}"{{old('supplier')==$supplier->id ? 'selected':''}}>{{$supplier->supplierName}}</option>
                        @endforeach
                     </select>
                    @error('supplier')
