@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
+
 
 class ProductController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth'); //para autenticacion
@@ -43,13 +45,30 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //dd($request->all()); //siver para mostar el consola
+        //dd($request['image']->store('upload-productos', 'public')); //siver para mostar el consola
+        //Validaciones para el formulario
         $data = request()->validate([
-            'productName' => 'required|min:5|max:50'
+            'productName' => 'required|min:5|max:50',
+            'price' => 'required',
+            'barcode' => 'required|min:5|max:8',
+            'image' => 'required|image',
+            'supplier' => 'required'
         ]);
+        //Obtener ruta de la imagen
+        $ruta_imagen = $request['image']->store('upload-productos', 'public');
+        //Resize de la imagen
+        //importante la instancia 
+        $img = Image::make(public_path("storage/{$ruta_imagen}"))->fit(1000, 550);
+        $img->save();
+        //Almacenamos datos del form en la DB sin usar modelo xD
         DB::table('products')->insert([
-            'productName' => $data['productName']
+            'productName' => $data['productName'],
+            'price' => $data['price'],
+            'barcode' => $data['barcode'],
+            'image' => $ruta_imagen,
+            'user_id' => Auth::user()->id,
+            'supplier_id' => $data['supplier'],
         ]);
-
         return view('products.index');
     }
 

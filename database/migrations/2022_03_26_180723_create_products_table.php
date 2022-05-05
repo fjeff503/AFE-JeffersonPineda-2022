@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('productName');
             $table->double('price', 8, 2);
             $table->integer('barcode');
+            $table->string('image')->nullable();
             $table->foreignId('supplier_id')->references('id')->on('suppliers')->comment('Relacion con tabla suppliers');
             $table->foreignId('user_id')->references('id')->on('users')->comment('Relacion con tabla Usuarios');
             $table->timestamps();
